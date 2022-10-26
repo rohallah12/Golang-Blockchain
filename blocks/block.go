@@ -2,6 +2,7 @@ package blocks
 
 import (
 	"bytes"
+	"encoding/binary"
 	"encoding/gob"
 
 	"github.com/blockchain/consensus"
@@ -21,8 +22,9 @@ type Block struct {
 	PoW        int64
 }
 
-func (b *Block) HashBlock() []byte {
-	nonce, hash := consensus.Work(b.Data)
+func (b *Block) HashBlock(LH []byte) []byte {
+	finalData := bytes.Join([][]byte{LH, b.Data, toHex(b.Difficulty)}, []byte{})
+	nonce, hash := consensus.Work(finalData)
 	b.PoW = nonce
 	b.Hash = hash[:]
 	b.Difficulty = consensus.Difficulty
@@ -49,4 +51,11 @@ func Desrialize(data []byte) *Block {
 	utils.HandleError(err)
 
 	return &block
+}
+
+func toHex(nonce int64) []byte {
+	buffer := new(bytes.Buffer)
+	err := binary.Write(buffer, binary.BigEndian, nonce)
+	utils.HandleError((err))
+	return buffer.Bytes()
 }
