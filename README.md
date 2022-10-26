@@ -1,6 +1,8 @@
 # A Basic Golang Proof Of Work Blockchain - Integrated With SQLITE
 
-# Running => go run .
+# Running Command:
+go run .
+to run main.go
 
 # Folders  
     - blockchain => includes the core blockchain logic, for adding blocks, starting a new blockchain
