@@ -1,4 +1,4 @@
-# A Proof Of Work Golang Blockchain - Integrated With SQLITE
+# A Basic Proof Of Work Golang Blockchain - Integrated With SQLITE
 
 # Features
     - Hashing and adding new blocks
