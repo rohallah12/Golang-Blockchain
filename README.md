@@ -1,8 +1,20 @@
-# A Basic Golang Proof Of Work Blockchain - Integrated With SQLITE
+# A Proof Of Work Golang Blockchain - Integrated With SQLITE
 
-# Running Command:
+# Features
+    - Hashing and adding new blocks
+    - Integrated with SQLITE
+    - Proof of work consensus
+    - Good for getting a basic idea of how blockchain works in general
+
+# Run Command:
 go run .
-to run main.go
+to run main.go, this will create a Blockchain.go file in DB folder with a table called 'Blocks'
+each row of this table has this columns :
+- Number => block number which is also used as primary key
+- Hash => hash of the block which is calculated using SHA256 of block data + difficulty + hash of last block 
+- Data => a byte array that contains informations contained in the block
+- Difficulty => Block diffculty which affects our consensus and how hard it is to calculate a hash
+- Nonce => Proof of work number calculated which is also used to validate the block
 
 # Folders  
     - blockchain => includes the core blockchain logic, for adding blocks, starting a new blockchain
